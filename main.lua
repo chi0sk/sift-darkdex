@@ -4320,9 +4320,9 @@ local function main()
 	local PreviousScr = nil
 
 	ScriptViewer.ViewScript = function(scr)
-		codeFrame:SetText([[--!! SIFT !!--
+		codeFrame:SetText(cleanSourceForViewer([[--!! SIFT !!--
 					Decompilation is queued. Please wait!
-					]])
+					]]))
 		window:Show()
 		local success, source = pcall(getgenv().decompile or function() end, scr)
 		if not success or not source then source, PreviousScr = "-- DEX - Source failed to decompile", nil else PreviousScr = scr end
