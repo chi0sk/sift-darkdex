@@ -4256,7 +4256,7 @@ local function decompileBytecode(bytecode: string, filename: string?): string
 	})
 
 	local response = request({
-		Url = API .. "/decompile?engine=cpp&rootMode=full-script&outputStyle=preserve&outputTier=plain"
+		Url = API .. "/decompile?engine=cpp&rootMode=full-script&outputStyle=preserve&outputTier=plain",
 		Method = "POST",
 		Headers = {
 			["Content-Type"] = "application/json",
