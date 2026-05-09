@@ -87,16 +87,14 @@ end
 
 loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-NDex-V1-Dark-Dex-76941"))()
 
-local env = getgenv()
-local decompileFunc = decompiley
-env.decompile = decompileFunc
-
-setmetatable(env, {
-	__newindex = function(_, key, value)
-		if key == "decompile" then
-			rawset(env, key, decompileFunc)
-		else
-			rawset(env, key, value)
+local shittyy = 0
+task.spawn(function()
+	while true do
+		if getgenv().decompile ~= decompiley then
+			getgenv().decompile = decompiley
 		end
+		task.wait(2)
+		shittyy += 1
+		if shittyy == 5 then break end
 	end
-})
+end)
