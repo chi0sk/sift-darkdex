@@ -87,6 +87,7 @@ end
 
 loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-NDex-V1-Dark-Dex-76941"))()
 
+-- dw ab it
 local shittyy = 0
 task.spawn(function()
 	while true do
