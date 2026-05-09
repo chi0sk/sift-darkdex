@@ -84,6 +84,19 @@ local function decompiley(scriptPath: Script | ModuleScript | LocalScript): stri
 	end
 	return decompileBytecode(bytecode, scriptPath.Name)
 end
-getgenv().decompile = decompiley
+
 loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-NDex-V1-Dark-Dex-76941"))()
-getgenv().decompile = decompiley
+
+local env = getgenv()
+local decompileFunc = decompiley
+env.decompile = decompileFunc
+
+setmetatable(env, {
+	__newindex = function(_, key, value)
+		if key == "decompile" then
+			rawset(env, key, decompileFunc)
+		else
+			rawset(env, key, value)
+		end
+	end
+})
