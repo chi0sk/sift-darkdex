@@ -58,7 +58,6 @@ local function decompileBytecode(bytecode: string, filename: string?): string
 			.. "\n--]]"
 	end
 
-
 	local decoded, parsed = pcall(HttpService.JSONDecode, HttpService, response.Body)
 	if not decoded then
 		return "-- Sift API returned invalid JSON\n\n--[[\n" .. tostring(response.Body) .. "\n--]]"
@@ -85,17 +84,6 @@ local function decompiley(scriptPath: Script | ModuleScript | LocalScript): stri
 	return decompileBytecode(bytecode, scriptPath.Name)
 end
 
+getgenv().decompile = decompiley
 loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-NDex-V1-Dark-Dex-76941"))()
-
--- dw ab it
-local shittyy = 0
-task.spawn(function()
-	while true do
-		if getgenv().decompile ~= decompiley then
-			getgenv().decompile = decompiley
-		end
-		task.wait(2)
-		shittyy += 1
-		if shittyy == 5 then break end
-	end
-end)
+getgenv().decompile = decompiley
