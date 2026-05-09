@@ -84,5 +84,6 @@ local function decompiley(scriptPath: Script | ModuleScript | LocalScript): stri
 	end
 	return decompileBytecode(bytecode, scriptPath.Name)
 end
+getgenv().decompile = decompiley
 loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-NDex-V1-Dark-Dex-76941"))()
 getgenv().decompile = decompiley
